@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="signup.css">
+    
+     
+
+  </head>
+  <body>
+     <header>
+      <img id="logo" src="logo1.png" alt="">
+      <h1 id="kt">Kerala Tourism</h1>
+      <div class="nav">
+        <a id="BH"  href="../html/main.index.html">Back To Home</a></div> 
+     </header>
+    
+      <form onsubmit="return validatePassword(document.getElementById('password').value);">
+        <h1>Sign Up</h1>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+  
+        <div>
+          <label for="phone">Phone number:</label>
+          <input type="tel" id="phone" name="phone" oninput="validatePhoneNumber()">
+          <p id="phone-error-message"></p>
+        </div>
+        
+        
+        <div>
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" oninput="validatePassword()">
+          <p id="password-error-message"></p>
+        </div>
+        
+  
+        <input type="submit" value="Sign Up">
+      </form>
+      <footer>
+        <p id="foot"> Department of Tourism, Government of Kerala, Park View, Thiruvananthapuram, Kerala, India - 695 033
+         Phone: +91 471 2321132, Fax: +91 471 2322279, E-mail: info@keralatourism.org.
+         All rights reserved © Kerala Tourism 2023. Copyright | Terms of Use | Cookie Policy | Contact Us-</p>
+ <a href="https://api.whatsapp.com/send?phone=7510512345"><img id="whatsapp" src="instagram logo.jpg" alt=""></a>
+ <a href="https://www.instagram.com/keralatourism/?hl=en"><img id="instagram" src="facebook logo.png" alt=""></a>
+ <a href="https://www.facebook.com/keralatourismofficial"><img id="facebook" src="twitter logo.png" alt=""></a>
+      </footer>
+     
+   
+
+    <script>
+      function validatePhoneNumber() {
+  var phoneNumber = document.getElementById("phone").value.replace(/[^0-9]/g, '');
+  var errorMessage = "";
+  var phoneRegex = /^(\d{3})[- .]?(\d{3})[- .]?(\d{4})$/;
+
+  if (phoneNumber.length !== 10) {
+    errorMessage += "Phone number must contain 10 digits. ";
+  }
+
+  if (!phoneRegex.test(phoneNumber)) {
+    errorMessage += "Phone number should be in the format of XXX-XXX-XXXX, XXX.XXX.XXXX or XXX XXX XXXX. ";
+  }
+
+  var phoneErrorMessage = document.getElementById("phone-error-message");
+  if (errorMessage) {
+    phoneErrorMessage.innerHTML = errorMessage;
+    phoneErrorMessage.style.display = "block";
+  } else {
+    phoneErrorMessage.style.display = "none";
+  }
+}
+
+  function validatePassword() {
+  var password = document.getElementById("password").value;
+  var uppercaseRegex = /[A-Z]/;
+  var lowercaseRegex = /[a-z]/;
+  var numberRegex = /[0-9]/;
+  var errorMessage = "";
+
+  if (password.length < 8) {
+    errorMessage += "Password must be at least 8 characters long. ";
+  }
+  if (!uppercaseRegex.test(password)) {
+    errorMessage += "Password must contain at least one uppercase letter. ";
+  }
+  if (!lowercaseRegex.test(password)) {
+    errorMessage += "Password must contain at least one lowercase letter. ";
+  }
+  if (!numberRegex.test(password)) {
+    errorMessage += "Password must contain at least one number. ";
+  }
+
+  var passwordErrorMessage = document.getElementById("password-error-message");
+  if (errorMessage) {
+    passwordErrorMessage.innerHTML = errorMessage;
+    passwordErrorMessage.style.display = "block";
+  } else {
+    passwordErrorMessage.style.display = "none";
+  }
+}
+
+</script>
+
+  </body>
+</html>

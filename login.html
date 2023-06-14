@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <header>
+        <img id="logo" src="logo1.png" alt="img not found">
+        <h1 id="kt">Kerala Tourism</h1>
+    </header>
+    <div class="nav">
+        <a id="BH"  href="../html/main.index.html">Back To Home</a></div> 
+    <div class="container">
+        <h1>Login</h1>
+        <form>
+          <label for="login">Email or Phone</label>
+          <input type="text" id="login" name="login" required>
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required>
+          <input type="submit" value="Login">
+        </form>
+      </div>
+      <footer>
+        <p id="foot"> Department of Tourism, Government of Kerala, Park View, Thiruvananthapuram, Kerala, India - 695 033
+         Phone: +91 471 2321132, Fax: +91 471 2322279, E-mail: info@keralatourism.org.
+         All rights reserved © Kerala Tourism 2023. Copyright | Terms of Use | Cookie Policy | Contact Us-</p>
+ <a href=""><img id="whatsapp" src="instagram logo.jpg" alt=""></a>
+ <a href=""><img id="instagram" src="facebook logo.png" alt=""></a>
+ <a href=""><img id="facebook" src="twitter logo.png" alt=""></a>
+      </footer>
+
+      <script>
+        const form = document.querySelector('form');
+const loginInput = document.querySelector('#login');
+const passwordInput = document.querySelector('#password');
+
+form.addEventListener('submit', function(event) {
+  event.preventDefault(); // prevent form submission
+  
+  // Validate email or phone number
+  if (!isValidEmail(loginInput.value) && !isValidPhoneNumber(loginInput.value)) {
+    alert('Invalid email or phone number');
+    return;
+  }
+  
+  // Validate password
+  if (!isValidPassword(passwordInput.value)) {
+    alert('Invalid password');
+    return;
+  }
+  
+  // Form is valid, submit it
+  form.submit();
+});
+
+function isValidEmail(email) {
+  // Regular expression to validate email format
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+}
+
+function isValidPhoneNumber(phone) {
+  // Regular expression to validate phone number format
+  const phoneRegex = /^(?:\d{10}|\d{3}[-.]?\d{3}[-.]?\d{4})$/;
+  return phoneRegex.test(phone);
+}
+
+function isValidPassword(password) {
+  // Regular expression to validate password format
+  const passwordRegex = /^(?=.\d)(?=.[a-z])(?=.*[A-Z]).{8,}$/;
+  return passwordRegex.test(password);
+}
+
+      </script>
+    
+</body>
+</html>
